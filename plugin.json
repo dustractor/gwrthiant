@@ -1,0 +1,34 @@
+{
+  "slug": "gwrthiant",
+  "name": "gwrthiant",
+  "version": "2.0.0",
+  "license": "GPL3",
+  "brand": "gwrthiant",
+  "author": "dustractor@gmail.com",
+  "authorEmail": "dustractor@gmail.com",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": [
+    {
+      "slug": "pysgota",
+      "name": "pysgota",
+      "description": "fish",
+      "tags": [
+        "Sequencer",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "gwreiddyn",
+      "name": "gwreiddyn",
+      "description": "convert v/oct to quantizer root input",
+      "tags": [
+        "Utility"
+      ]
+    }
+  ]
+}
