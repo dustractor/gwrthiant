@@ -1,5 +1,6 @@
 #include "plugin.hpp"
 
+#pragma GCC diagnostic ignored "-Warray-bounds"
 
 struct Clwyd : Module {
 	enum ParamId {
@@ -63,25 +64,25 @@ struct Clwyd : Module {
         int x = 0x01;
 
         float gates[16] = { // {{{1
-            10.f * (ival & x<<((s+0)%16)),
-            10.f * (ival & x<<((s+1)%16)),
-            10.f * (ival & x<<((s+2)%16)),
-            10.f * (ival & x<<((s+3)%16)),
+            10.f * (bool)(ival & x<<((s+0)%16)),
+            10.f * (bool)(ival & x<<((s+1)%16)),
+            10.f * (bool)(ival & x<<((s+2)%16)),
+            10.f * (bool)(ival & x<<((s+3)%16)),
 
-            10.f * (ival & x<<((s+4)%16)),
-            10.f * (ival & x<<((s+5)%16)),
-            10.f * (ival & x<<((s+6)%16)),
-            10.f * (ival & x<<((s+7)%16)),
+            10.f * (bool)(ival & x<<((s+4)%16)),
+            10.f * (bool)(ival & x<<((s+5)%16)),
+            10.f * (bool)(ival & x<<((s+6)%16)),
+            10.f * (bool)(ival & x<<((s+7)%16)),
 
-            10.f * (ival & x<<((s+8)%16)),
-            10.f * (ival & x<<((s+9)%16)),
-            10.f * (ival & x<<((s+10)%16)),
-            10.f * (ival & x<<((s+11)%16)),
+            10.f * (bool)(ival & x<<((s+8)%16)),
+            10.f * (bool)(ival & x<<((s+9)%16)),
+            10.f * (bool)(ival & x<<((s+10)%16)),
+            10.f * (bool)(ival & x<<((s+11)%16)),
 
-            10.f * (ival & x<<((s+12)%16)),
-            10.f * (ival & x<<((s+13)%16)),
-            10.f * (ival & x<<((s+14)%16)),
-            10.f * (ival & x<<((s+15)%16)),
+            10.f * (bool)(ival & x<<((s+12)%16)),
+            10.f * (bool)(ival & x<<((s+13)%16)),
+            10.f * (bool)(ival & x<<((s+14)%16)),
+            10.f * (bool)(ival & x<<((s+15)%16)),
         }; // }}}1
         lights[LITE_1_LIGHT].setBrightness(gates[0]/10.f);
         lights[LITE_2_LIGHT].setBrightness(gates[1]/10.f);

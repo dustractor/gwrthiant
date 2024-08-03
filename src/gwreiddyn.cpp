@@ -1,6 +1,8 @@
 #include "plugin.hpp"
 #include <cmath>
 
+#pragma GCC diagnostic ignored "-Warray-bounds"
+
 struct Gwreiddyn : Module {
 	enum ParamId {
 		PARAMS_LEN

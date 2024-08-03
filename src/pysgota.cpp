@@ -1,6 +1,7 @@
 #include "plugin.hpp"
 #include <cmath>
 
+#pragma GCC diagnostic ignored "-Warray-bounds"
 
 struct Pysgota : Module {
 	enum ParamId {
