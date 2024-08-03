@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "license": "GPL3",
   "brand": "gwrthiant",
-  "author": "dustractor@gmail.com",
+  "author": "dustractor",
   "authorEmail": "dustractor@gmail.com",
   "authorUrl": "",
   "pluginUrl": "",
@@ -28,6 +28,14 @@
       "description": "convert v/oct to quantizer root input",
       "tags": [
         "Utility"
+      ]
+    },
+    {
+      "slug": "clwyd",
+      "name": "clwyd",
+      "description": "gates",
+      "tags": [
+        "Polyphonic"
       ]
     }
   ]

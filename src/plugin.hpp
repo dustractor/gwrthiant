@@ -11,4 +11,6 @@ extern Plugin* pluginInstance;
 // extern Model* modelMyModule;
 extern Model* modelPysgota;
 extern Model* modelGwreiddyn;
+extern Model* modelClwyd;
+
 
