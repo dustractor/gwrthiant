@@ -1,5 +1,6 @@
 #include "plugin.hpp"
 #include <cmath>
+#include <algorithm>
 
 #pragma GCC diagnostic ignored "-Warray-bounds"
 
@@ -56,9 +57,19 @@ struct Pysgota : Module {
         if (inputs[END_VOLTAGE_SOCKET_INPUT].isConnected()){
             vend = inputs[END_VOLTAGE_SOCKET_INPUT].getVoltage();
         }
-        float scale_y = params[SCALE_Y_KNOB_PARAM].getValue();
+        float scale_y_t = params[SCALE_Y_KNOB_PARAM].getValue();
+        float scale_y[16] = {};
         if (inputs[SCALE_Y_SOCKET_INPUT].isConnected()){
-            scale_y = inputs[SCALE_Y_SOCKET_INPUT].getVoltage();
+            if (inputs[SCALE_Y_SOCKET_INPUT].isPolyphonic()){
+                inputs[SCALE_Y_SOCKET_INPUT].readVoltages(scale_y);
+            }
+            else {
+                scale_y_t = inputs[SCALE_Y_SOCKET_INPUT].getVoltage();
+                std::fill_n(scale_y,16,scale_y_t);
+            }
+        }
+        else {
+            std::fill_n(scale_y,16,scale_y_t);
         }
         float offset = params[OFFSET_KNOB_PARAM].getValue();
         if (inputs[OFFSET_SOCKET_INPUT].isConnected()){
@@ -68,15 +79,25 @@ struct Pysgota : Module {
         if (inputs[SCALE_SOCKET_INPUT].isConnected()){
             scale = inputs[SCALE_SOCKET_INPUT].getVoltage();
         }
-        float modulus = params[MODULUS_KNOB_PARAM].getValue();
+        float modulus_t = params[MODULUS_KNOB_PARAM].getValue();
+        float modulus[16] = {};
         if (inputs[MODULUS_SOCKET_INPUT].isConnected()){
-            modulus = inputs[MODULUS_SOCKET_INPUT].getVoltage();
+            if (inputs[MODULUS_SOCKET_INPUT].isPolyphonic()){
+                inputs[MODULUS_SOCKET_INPUT].readVoltages(modulus);
+            }
+            else {
+                modulus_t = inputs[MODULUS_SOCKET_INPUT].getVoltage();
+                std::fill_n(modulus,16,modulus_t);
+            }
+        }
+        else {
+            std::fill_n(modulus,16,modulus_t);
         }
         float increment = (vend - vstart) / (PORT_MAX_CHANNELS - 1);
         float range[PORT_MAX_CHANNELS];
-        if (!((scale == 0) || (modulus == 0))){
+        if (!(scale == 0)){
             for (int i=0; i<PORT_MAX_CHANNELS; i++){
-                range[i] = fmod((offset + sin(scale_y * (vstart + increment * i))) * scale, modulus);
+                range[i] = fmod((offset + sin(scale_y[i] * (vstart + increment * i))) * scale, (modulus[i]==0?0.001:modulus[i]));
             }
         }
         outputs[POLYPHONIC_OUTPUT].setChannels(PORT_MAX_CHANNELS);

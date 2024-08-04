@@ -39,7 +39,7 @@ struct Clwyd : Module {
 
 	Clwyd() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
-		configParam(ANALOG_VALUE_PARAM, 0.f, 10.f, 0.f, "Analog Value");
+		configParam(ANALOG_VALUE_PARAM, 0.f, 9.9999f, 0.f, "Analog Value");
 		configParam(SHIFT_VALUE_PARAM, -10.f, 10.f, 0.f, "Shift Value");
 		configInput(ANALOG_CV_INPUT, "Analog CV 0-10");
 		configInput(SHIFT_CV_INPUT, "Shift CV");
