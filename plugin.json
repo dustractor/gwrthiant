@@ -53,6 +53,14 @@
       "tags": [
         "utility"
       ]
+    },
+    {
+      "slug": "graddfa",
+      "name": "graddfa",
+      "description": "Convert notes into values for selecting modes of Bidoo Dikt@t",
+      "tags": [
+        "utility"
+      ]
     }
   ]
 }
