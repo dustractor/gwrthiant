@@ -37,6 +37,14 @@
       "tags": [
         "Polyphonic"
       ]
+    },
+    {
+      "slug": "patrwm",
+      "name": "patrwm",
+      "description": "translate v/oct signals into hexseq pattern-selection cv",
+      "tags": [
+        "utility"
+      ]
     }
   ]
 }

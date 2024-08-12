@@ -109,7 +109,10 @@ struct Pysgota : Module {
 struct PysgotaWidget : ModuleWidget {
 	PysgotaWidget(Pysgota* module) {
 		setModule(module);
-		setPanel(createPanel(asset::plugin(pluginInstance, "res/pysgota.svg")));
+		setPanel(createPanel(
+                    asset::plugin(pluginInstance, "res/pysgota.svg"),
+                    asset::plugin(pluginInstance, "res/pysgota-dark.svg")
+                    ));
 
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
