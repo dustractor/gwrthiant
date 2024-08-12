@@ -13,6 +13,7 @@ p->addModel(modelPysgota);
 p->addModel(modelGwreiddyn);
 p->addModel(modelClwyd);
 p->addModel(modelPatrwm);
+p->addModel(modelNilyniant);
 	// Any other plugin initialization may go here.
 	// As an alternative, consider lazy-loading assets and lookup tables when your module is created to reduce startup times of Rack.
 }

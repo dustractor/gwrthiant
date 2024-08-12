@@ -45,6 +45,14 @@
       "tags": [
         "utility"
       ]
+    },
+    {
+      "slug": "nilyniant",
+      "name": "nilyniant",
+      "description": "transform note voltages to control sequence number input for impromptu sequencers",
+      "tags": [
+        "utility"
+      ]
     }
   ]
 }
