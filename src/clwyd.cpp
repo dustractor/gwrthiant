@@ -59,7 +59,8 @@ struct Clwyd : Module {
         }
 
         int ival = (int)(val * 6553.6f);
-        int s = (int)(shift_f * 16.f);
+        /* int s = (int)(shift_f * 16.f); */
+        int s = (int)(shift_f * 1.6f);
 
         int x = 0x01;
 
