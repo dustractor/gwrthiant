@@ -7,7 +7,7 @@ Control the root notes of various quantizers (Use thirteen-out for Bidoo Dikt@t,
 
 ### Graddfa
 Convert notes C4-A7 to values which select modes of Bidoo Dikt@t  
-![graddfa](https://github.com/dustractor/gwrthiant/blob/main/img/graddfa.png)
+![graddfa](https://github.com/dustractor/gwrthiant/blob/main/img/graddfa.gif)
 
 ### Pysgota  
 Turn the knobs, get 16 polyphonic values to use as you want.  
