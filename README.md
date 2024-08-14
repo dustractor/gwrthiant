@@ -1,6 +1,8 @@
 # gwrthiant
 VCV Rack Plugin
 
+[Video Demonstration](https://youtu.be/8eYKXZyV6sM)
+
 ### Gwreiddyn  
 Control the root notes of various quantizers (Use thirteen-out for Bidoo Dikt@t, use twelve-out for JW-Modules Quantizer, maybe works for others idk)  
 ![gwreiddyn](https://github.com/dustractor/gwrthiant/blob/main/img/gwreiddyn.png)
