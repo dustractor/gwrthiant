@@ -1,3 +1,22 @@
+// Nilyniant converts notes C4-D#5 of a v/oct signal to CV voltages values
+// which can be used to select patterns 1-16 of Impromptu's PhraseSeq16
+// or notes C4-G6 to values which select patterns 1-32 of either
+// Impromptu's PhraseSeq32 or GateSeq64.
+//
+// Copyright (C) 2024 Shams Kitz
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 #include "plugin.hpp"
 #include <cmath>
 

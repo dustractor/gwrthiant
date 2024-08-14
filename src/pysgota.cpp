@@ -1,3 +1,24 @@
+// Pysgota starts with a range of 16 evenly spaced values determined by its
+// start and end parameters or inputs, applies the function sin(x*y) to each
+// where y is the (possibly polyphonic) freq mult parameter, applies an offset
+// and a scale to the resulting value and then applies a modulo operation
+// v = A modulo B where B is taken from the (possibly polyphonic) modulus
+// parameter or input and the resulting 16 values are output polyphonically.
+//
+// Copyright (C) 2024 Shams Kitz
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 #include "plugin.hpp"
 #include <cmath>
 #include <algorithm>
