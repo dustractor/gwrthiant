@@ -6,6 +6,7 @@ VCV Rack Plugin
 ### Gwreiddyn  
 Control the root notes of various quantizers.
 Use thirteen-out for Bidoo Dikt@t
+
 Twelve-out works for various other quantizers:
 * JW-Modules Quantizer, NoteSeq, NoteSeq16...
 * docB JTScaler (use μmap)
