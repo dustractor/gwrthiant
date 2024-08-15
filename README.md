@@ -4,7 +4,16 @@ VCV Rack Plugin
 [Video Demonstration](https://youtu.be/8eYKXZyV6sM)
 
 ### Gwreiddyn  
-Control the root notes of various quantizers (Use thirteen-out for Bidoo Dikt@t, use twelve-out for JW-Modules Quantizer, maybe works for others idk)  
+Control the root notes of various quantizers.
+Use thirteen-out for Bidoo Dikt@t
+Twelve-out works for various other quantizers:
+* JW-Modules Quantizer, NoteSeq, NoteSeq16...
+* docB JTScaler (use μmap)
+* Alef's Bits Slips
+* SS-Modules Melodygen (use μmap)
+* Autinn Fluencerator (subtract 5.83 V from twelve-out signal)
+* ...?
+Note: There are a few quantizers that don't need any treatment for a v/oct signal to control their root note, such as Orange Line Mother or Grande Quant.
 ![gwreiddyn](https://github.com/dustractor/gwrthiant/blob/main/img/gwreiddyn.png)
 
 ### Graddfa
