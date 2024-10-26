@@ -60,6 +60,14 @@
       "tags": [
         "utility"
       ]
+    },
+    {
+      "slug": "cyfeiriad",
+      "name": "cyfeiriad",
+      "description": "takes a polyphonic gate signal and outputs if there are an even number of gates active or if there are less than two gates active. (Useful to control arpeggiators.)",
+      "tags": [
+        "utility"
+      ]
     }
   ]
 }
