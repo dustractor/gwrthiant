@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="10.16mm"
+   height="128.5mm"
+   viewBox="0 0 10.16 128.5"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="seiclo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="4.7269811"
+     inkscape:cx="98.583006"
+     inkscape:cy="128.83487"
+     inkscape:window-width="3840"
+     inkscape:window-height="2126"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="242.83466"
+       spacingx="2.5399999"
+       spacingy="2.5399999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <rect
+     style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.465"
+     id="rect4"
+     width="10.16"
+     height="128.53465"
+     x="0"
+     y="0"
+     inkscape:label="bg" />
+  <g
+     inkscape:label="components"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="randomize_trig"
+       cx="5.0800004"
+       cy="42.174656"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="randomize_trig" />
+    <ellipse
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="clock_trig"
+       cx="5.0799999"
+       cy="6.6146593"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="clock_trig" />
+    <ellipse
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="randomize_btn"
+       cx="5.0800004"
+       cy="34.554657"
+       rx="2.6104164"
+       ry="2.54"
+       inkscape:label="randomize_btn" />
+    <ellipse
+       style="fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="poly_out"
+       cx="5.0800004"
+       cy="123.45466"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="poly_out" />
+    <ellipse
+       style="fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="seq_out"
+       cx="5.0799999"
+       cy="115.83466"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="seq_out" />
+    <ellipse
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="channels"
+       cx="5.0800004"
+       cy="26.934658"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="channels" />
+    <ellipse
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="range_min"
+       cx="5.0799999"
+       cy="72.654655"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="range_min" />
+    <ellipse
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="range_max"
+       cx="5.0799999"
+       cy="82.814659"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="range_max" />
+    <ellipse
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="reset"
+       cx="5.0799999"
+       cy="14.234658"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="reset" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="https://www.gnu.org/licenses/gpl-3.0.html" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

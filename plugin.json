@@ -68,6 +68,16 @@
       "tags": [
         "utility"
       ]
+    },
+    {
+      "slug": "seiclo",
+      "name": "seiclo",
+      "description": "Polyphonic sample and hold with sequencer",
+      "tags": [
+        "Polyphonic",
+        "\"Sample and Hold\"",
+        "Sequencer"
+      ]
     }
   ]
 }
