@@ -78,6 +78,15 @@
         "\"Sample and Hold\"",
         "Sequencer"
       ]
+    },
+    {
+      "slug": "erys",
+      "name": "erys",
+      "description": "modulus",
+      "tags": [
+        "polyphonic",
+        "utility"
+      ]
     }
   ]
 }

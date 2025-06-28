@@ -33,3 +33,4 @@ extern Model* modelNilyniant;
 extern Model* modelGraddfa;
 extern Model* modelCyfeiriad;
 extern Model* modelSeiclo;
+extern Model* modelErys;

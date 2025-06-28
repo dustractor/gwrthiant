@@ -1,5 +1,7 @@
 #include "plugin.hpp"
 
+#pragma GCC diagnostic ignored "-Warray-bounds"
+
 #define MAX_CHANNELS 16
 
 struct Seiclo : Module {
@@ -35,28 +37,31 @@ struct Seiclo : Module {
     bool prevRndGate = 0;
     bool prevClock = 0;
     bool prevReset = 0;
-    int prevChannels = 0;
     bool clk_transitioned_high = 0;
     bool rst_transitioned_high = 0;
     bool rnd_transitioned_high = 0;
+    dsp::ClockDivider writeDivider;
 
 	Seiclo() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
 		configButton(RANDOMIZE_BTN_PARAM, "Randomize");
-		configParam(CHANNELS_PARAM, 1.f, 16.f, 1.f, "Channels");
+		configParam(CHANNELS_PARAM, 1.f, 16.f, 16.f, "Channels");
         paramQuantities[CHANNELS_PARAM]->snapEnabled = true;
 		configParam(RANGE_MIN_PARAM, -10.f, 10.f, 0.f, "Range min");
 		configParam(RANGE_MAX_PARAM, -10.f, 10.f, 10.f, "Range max");
+
 		configInput(CLOCK_TRIG_INPUT, "Clock");
 		configInput(RANDOMIZE_TRIG_INPUT, "Randomize");
 		configInput(RESET_INPUT, "Reset");
 		configOutput(SEQ_OUT_OUTPUT, "Seq out");
 		configOutput(POLY_OUT_OUTPUT, "Poly out");
+        writeDivider.setDivision(512);
 	}
 
 	void process(const ProcessArgs& args) override {
         int channels = params[CHANNELS_PARAM].getValue();
-        prevChannels = channels;
+        outputs[POLY_OUT_OUTPUT].setChannels(channels);
+
         float range_min = params[RANGE_MIN_PARAM].getValue();
         float range_max = params[RANGE_MAX_PARAM].getValue();
 
@@ -88,10 +93,11 @@ struct Seiclo : Module {
             rnd_transitioned_high = false;
         }
         if (rnd_transitioned_high){
-            for (int i=0;i<channels;i++){
+            for (int i=0;i<MAX_CHANNELS;i++){
                 fvals[i] = math::rescale(random::uniform(),0.f,1.f,range_min,range_max);
             }
-            outputs[POLY_OUT_OUTPUT].setChannels(channels);
+        }
+        if (rnd_transitioned_high or writeDivider.process()){
             outputs[POLY_OUT_OUTPUT].writeVoltages(fvals);
         }
         prevRndGate = rnd_gate;
@@ -104,13 +110,41 @@ struct Seiclo : Module {
             outputs[SEQ_OUT_OUTPUT].setVoltage(fvals[seqStep]);
         }
 	}
+
+    json_t* dataToJson() override {
+        json_t* rootJ = json_object();
+        json_t* fvalsJ = json_array();
+        for (int i=0;i<MAX_CHANNELS;i++) {
+            json_t* v = json_real(fvals[i]);
+            json_array_append(fvalsJ,v);
+        }
+        json_object_set_new(rootJ,"fvals",fvalsJ);
+        return rootJ;
+    }
+
+    void dataFromJson(json_t* rootJ) override {
+        json_t* fvalsJ = json_object_get(rootJ,"fvals");
+        if (fvalsJ) {
+            json_t *v;
+            size_t dataIndex;
+            json_array_foreach(fvalsJ,dataIndex,v) {
+                fvals[dataIndex] = json_real_value(v);
+            }
+            outputs[POLY_OUT_OUTPUT].writeVoltages(fvals);
+
+        }
+    }
+
 };
 
 
 struct SeicloWidget : ModuleWidget {
 	SeicloWidget(Seiclo* module) {
 		setModule(module);
-		setPanel(createPanel(asset::plugin(pluginInstance, "res/seiclo.svg")));
+		setPanel(createPanel(
+                    asset::plugin(pluginInstance, "res/seiclo.svg"),
+                    asset::plugin(pluginInstance, "res/seiclo-dark.svg")
+                    ));
 
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));

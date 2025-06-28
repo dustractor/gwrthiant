@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
-   sodipodi:docname="seiclo.svg"
+   sodipodi:docname="seiclo-dark.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@
   <defs
      id="defs1" />
   <rect
-     style="fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.465"
+     style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.465"
      id="rect4"
      width="10.16"
      height="128.53465"
