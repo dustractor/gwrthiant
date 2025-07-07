@@ -28,7 +28,7 @@
      showgrid="true"
      inkscape:zoom="4.7269811"
      inkscape:cx="98.583005"
-     inkscape:cy="230.3796"
+     inkscape:cy="162.68311"
      inkscape:window-width="3840"
      inkscape:window-height="2126"
      inkscape:window-x="-11"
@@ -69,8 +69,8 @@
     <ellipse
        style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="randomize_trig"
-       cx="5.0800004"
-       cy="42.174656"
+       cx="5.0799994"
+       cy="49.794659"
        rx="2.54"
        ry="2.5399997"
        inkscape:label="randomize_trig" />
@@ -85,8 +85,8 @@
     <ellipse
        style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="randomize_btn"
-       cx="5.0800004"
-       cy="34.554657"
+       cx="5.0799994"
+       cy="39.634659"
        rx="2.6104164"
        ry="2.54"
        inkscape:label="randomize_btn" />
@@ -109,8 +109,8 @@
     <ellipse
        style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="channels"
-       cx="5.0800004"
-       cy="26.934658"
+       cx="5.0799994"
+       cy="29.474659"
        rx="2.54"
        ry="2.5399997"
        inkscape:label="channels" />
@@ -133,8 +133,8 @@
     <ellipse
        style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="reset"
-       cx="5.0799999"
-       cy="14.234658"
+       cx="5.0799994"
+       cy="16.774658"
        rx="2.54"
        ry="2.5399997"
        inkscape:label="reset" />

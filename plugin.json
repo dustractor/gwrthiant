@@ -87,6 +87,23 @@
         "polyphonic",
         "utility"
       ]
+    },
+    {
+      "slug": "nodiadau",
+      "name": "nodiadau",
+      "description": "quantizer",
+      "tags": [
+        "quantizer",
+        "polyphonic"
+      ]
+    },
+    {
+      "slug": "pylu",
+      "name": "pylu",
+      "description": "crossfader",
+      "tags": [
+        "utility"
+      ]
     }
   ]
 }

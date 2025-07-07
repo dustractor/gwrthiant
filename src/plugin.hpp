@@ -34,3 +34,19 @@ extern Model* modelGraddfa;
 extern Model* modelCyfeiriad;
 extern Model* modelSeiclo;
 extern Model* modelErys;
+extern Model* modelNodiadau;
+extern Model* modelPylu;
+
+struct Crossfader : app::SvgSlider {
+	Crossfader() {
+		setBackgroundSvg(Svg::load(asset::plugin(pluginInstance, "res/components/CrossfaderBackground.svg")));
+		setHandleSvg(Svg::load(asset::plugin(pluginInstance, "res/components/CrossfaderHandle.svg")));
+		minHandlePos = mm2px(Vec(4.5f, -0.8f));
+		maxHandlePos = mm2px(Vec(34.5, -0.8f));
+		horizontal = true;
+		math::Vec margin = math::Vec(15, 5);
+		background->box.pos = margin;
+		box.size = background->box.size.plus(margin.mult(2));
+	}
+};
+

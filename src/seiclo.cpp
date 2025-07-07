@@ -151,14 +151,14 @@ struct SeicloWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(5.08, 26.935)), module, Seiclo::CHANNELS_PARAM));
-		addParam(createParamCentered<BefacoPush>(mm2px(Vec(5.08, 34.555)), module, Seiclo::RANDOMIZE_BTN_PARAM));
+		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(5.08, 29.475)), module, Seiclo::CHANNELS_PARAM));
+		addParam(createParamCentered<BefacoPush>(mm2px(Vec(5.08, 39.635)), module, Seiclo::RANDOMIZE_BTN_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(5.08, 72.655)), module, Seiclo::RANGE_MIN_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(5.08, 82.815)), module, Seiclo::RANGE_MAX_PARAM));
 
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.08, 6.615)), module, Seiclo::CLOCK_TRIG_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.08, 14.235)), module, Seiclo::RESET_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.08, 42.175)), module, Seiclo::RANDOMIZE_TRIG_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.08, 16.775)), module, Seiclo::RESET_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.08, 49.795)), module, Seiclo::RANDOMIZE_TRIG_INPUT));
 
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.08, 115.835)), module, Seiclo::SEQ_OUT_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(5.08, 123.455)), module, Seiclo::POLY_OUT_OUTPUT));
