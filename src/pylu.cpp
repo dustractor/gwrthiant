@@ -1,6 +1,32 @@
 #include "plugin.hpp"
 
 
+struct ExpLogSlewLimiter {
+
+	float out = 0.f;
+	float slew = 15.0f;
+
+	void reset() {
+		out = 0.f;
+	}
+
+	float process(float deltaTime, float in) {
+		if (in > out) {
+			out += slew * (in - out) * deltaTime;
+			if (out > in) {
+				out = in;
+			}
+		}
+		else if (in < out) {
+			out += slew * (in - out) * deltaTime;
+			if (out < in) {
+				out = in;
+			}
+		}
+		return out;
+	}
+};
+
 struct Pylu : Module {
 	enum ParamId {
 		A_1_PARAM,
@@ -40,6 +66,9 @@ struct Pylu : Module {
 		LIGHTS_LEN
 	};
 
+    ExpLogSlewLimiter slewLimiter;
+
+
 	Pylu() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
 		configParam(A_1_PARAM, -10.f, 10.f, 0.f, "A1");
@@ -73,6 +102,23 @@ struct Pylu : Module {
 	}
 
 	void process(const ProcessArgs& args) override {
+        float fadeValue = slewLimiter.process(args.sampleTime,params[FADER_PARAM].getValue());
+        outputs[O1_OUTPUT].setVoltage(params[A_1_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_1_PARAM].getValue() * (       fadeValue));
+        outputs[O2_OUTPUT].setVoltage(params[A_2_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_2_PARAM].getValue() * (       fadeValue));
+        outputs[O3_OUTPUT].setVoltage(params[A_3_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_3_PARAM].getValue() * (       fadeValue));
+        outputs[O4_OUTPUT].setVoltage(params[A_4_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_4_PARAM].getValue() * (       fadeValue));
+        outputs[O5_OUTPUT].setVoltage(params[A_5_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_5_PARAM].getValue() * (       fadeValue));
+        outputs[O6_OUTPUT].setVoltage(params[A_6_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_6_PARAM].getValue() * (       fadeValue));
+        outputs[O7_OUTPUT].setVoltage(params[A_7_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_7_PARAM].getValue() * (       fadeValue));
+        outputs[O8_OUTPUT].setVoltage(params[A_8_PARAM].getValue() * (1.0f - fadeValue) +
+                                      params[B_8_PARAM].getValue() * (       fadeValue));
 	}
 };
 
