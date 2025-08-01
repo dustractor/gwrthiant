@@ -104,6 +104,14 @@
       "tags": [
         "utility"
       ]
+    },
+    {
+      "slug": "lithr",
+      "name": "lithr",
+      "description": "sliders",
+      "tags": [
+        "utility"
+      ]
     }
   ]
 }

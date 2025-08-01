@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
-   sodipodi:docname="pylu2.svg"
+   sodipodi:docname="pylu-dark.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,15 +24,15 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="4.1471516"
-     inkscape:cx="87.168262"
-     inkscape:cy="314.91494"
+     inkscape:zoom="2.932479"
+     inkscape:cx="25.405126"
+     inkscape:cy="295.65429"
      inkscape:window-width="3840"
      inkscape:window-height="2126"
      inkscape:window-x="-11"
      inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2">
+     inkscape:current-layer="layer1">
     <inkscape:grid
        id="grid1"
        units="mm"
@@ -59,7 +59,7 @@
      style="display:inline"
      sodipodi:insensitive="true">
     <rect
-       style="fill:#f2f2f2;stroke-width:0.360187"
+       style="fill:#1a1a1a;stroke-width:0.360187"
        id="rect1"
        width="45.720001"
        height="128.5"

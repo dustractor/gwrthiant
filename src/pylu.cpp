@@ -49,6 +49,7 @@ struct Pylu : Module {
 		PARAMS_LEN
 	};
 	enum InputId {
+		FADER_CV_INPUT,
 		INPUTS_LEN
 	};
 	enum OutputId {
@@ -91,6 +92,8 @@ struct Pylu : Module {
 
 		configParam(FADER_PARAM, 0.f, 1.f, 0.f, "Fader");
 
+		configInput(FADER_CV_INPUT, "Fader CV");
+
 		configOutput(O1_OUTPUT, "O1");
 		configOutput(O2_OUTPUT, "O2");
 		configOutput(O3_OUTPUT, "O3");
@@ -102,7 +105,15 @@ struct Pylu : Module {
 	}
 
 	void process(const ProcessArgs& args) override {
-        float fadeValue = slewLimiter.process(args.sampleTime,params[FADER_PARAM].getValue());
+        float fader_raw = params[FADER_PARAM].getValue();
+
+        if (inputs[FADER_CV_INPUT].isConnected()){
+            fader_raw += inputs[FADER_CV_INPUT].getVoltage() * 0.1f;
+        }
+
+        float fadeValue = slewLimiter.process(args.sampleTime,fader_raw);
+
+        
         outputs[O1_OUTPUT].setVoltage(params[A_1_PARAM].getValue() * (1.0f - fadeValue) +
                                       params[B_1_PARAM].getValue() * (       fadeValue));
         outputs[O2_OUTPUT].setVoltage(params[A_2_PARAM].getValue() * (1.0f - fadeValue) +
@@ -126,41 +137,47 @@ struct Pylu : Module {
 struct PyluWidget : ModuleWidget {
 	PyluWidget(Pylu* module) {
 		setModule(module);
-		setPanel(createPanel(asset::plugin(pluginInstance, "res/pylu.svg")));
+
+		setPanel(createPanel(
+                    asset::plugin(pluginInstance, "res/pylu.svg"),
+                    asset::plugin(pluginInstance, "res/pylu-dark.svg")
+                    ));
 
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 12.7)), module, Pylu::A_1_PARAM));
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 25.4)), module, Pylu::A_2_PARAM));
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 38.1)), module, Pylu::A_3_PARAM));
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 50.8)), module, Pylu::A_4_PARAM));
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 63.5)), module, Pylu::A_5_PARAM));
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 76.2)), module, Pylu::A_6_PARAM));
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 88.9)), module, Pylu::A_7_PARAM));
-		addParam(createParamCentered<Rogan2PBlue>(mm2px(Vec(15.24, 101.6)), module, Pylu::A_8_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 12.7)), module, Pylu::A_1_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 25.4)), module, Pylu::A_2_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 38.1)), module, Pylu::A_3_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 50.8)), module, Pylu::A_4_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 63.5)), module, Pylu::A_5_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 76.2)), module, Pylu::A_6_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 88.9)), module, Pylu::A_7_PARAM));
+		addParam(createParamCentered<Rogan1PBlue>(mm2px(Vec(15.24, 101.6)), module, Pylu::A_8_PARAM));
 
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 12.7)), module, Pylu::B_1_PARAM));
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 25.4)), module, Pylu::B_2_PARAM));
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 38.1)), module, Pylu::B_3_PARAM));
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 50.8)), module, Pylu::B_4_PARAM));
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 63.5)), module, Pylu::B_5_PARAM));
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 76.2)), module, Pylu::B_6_PARAM));
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 88.9)), module, Pylu::B_7_PARAM));
-		addParam(createParamCentered<Rogan2PRed>(mm2px(Vec(30.48, 101.6)), module, Pylu::B_8_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 12.7)), module, Pylu::B_1_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 25.4)), module, Pylu::B_2_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 38.1)), module, Pylu::B_3_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 50.8)), module, Pylu::B_4_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 63.5)), module, Pylu::B_5_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 76.2)), module, Pylu::B_6_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 88.9)), module, Pylu::B_7_PARAM));
+		addParam(createParamCentered<Rogan1PRed>(mm2px(Vec(30.48, 101.6)), module, Pylu::B_8_PARAM));
 
-		addParam(createParamCentered<Crossfader>(mm2px(Vec(22.86, 116.84)), module, Pylu::FADER_PARAM));
+		addParam(createParamCentered<Crossfader>(mm2px(Vec(22.86, 111.76)), module, Pylu::FADER_PARAM));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 12.7)), module, Pylu::O1_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 25.4)), module, Pylu::O2_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 38.1)), module, Pylu::O3_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 50.8)), module, Pylu::O4_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 63.5)), module, Pylu::O5_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 76.2)), module, Pylu::O6_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 88.9)), module, Pylu::O7_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(40.64, 101.6)), module, Pylu::O8_OUTPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(22.86, 121.92)), module, Pylu::FADER_CV_INPUT));
+
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 12.7)), module, Pylu::O1_OUTPUT));
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 25.4)), module, Pylu::O2_OUTPUT));
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 38.1)), module, Pylu::O3_OUTPUT));
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 50.8)), module, Pylu::O4_OUTPUT));
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 63.5)), module, Pylu::O5_OUTPUT));
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 76.2)), module, Pylu::O6_OUTPUT));
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 88.9)), module, Pylu::O7_OUTPUT));
+		addOutput(createOutputCentered<DarkPJ301MPort>(mm2px(Vec(40.64, 101.6)), module, Pylu::O8_OUTPUT));
 	}
 };
 

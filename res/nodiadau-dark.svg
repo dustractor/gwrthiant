@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="25.4mm"
+   height="128.5mm"
+   viewBox="0 0 25.399999 128.5"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="nodiadau-dark.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="3.3424804"
+     inkscape:cx="17.801152"
+     inkscape:cy="258.78985"
+     inkscape:window-width="3840"
+     inkscape:window-height="2126"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="true">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="2.54"
+       spacingy="2.54"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#1a1a1a;stroke-width:0.465"
+       id="rect23"
+       width="25.4"
+       height="128.5"
+       x="0"
+       y="0"
+       sodipodi:insensitive="true" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="components"
+     style="display:none">
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="locrian"
+       cx="20.399157"
+       cy="95.249992"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="locrian" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="aeolian"
+       cx="20.399157"
+       cy="85.089989"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="aeolian" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="mixolydian"
+       cx="20.399157"
+       cy="74.929985"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="mixolydian" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="lydian"
+       cx="20.399157"
+       cy="64.769989"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="lydian" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="phrygian"
+       cx="20.399157"
+       cy="54.609989"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="phrygian" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="dorian"
+       cx="20.399157"
+       cy="44.449989"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="dorian" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="ionian"
+       cx="20.399157"
+       cy="34.289993"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="ionian" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="b"
+       cx="5.0799999"
+       cy="106.67999"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="b" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="as"
+       cx="5.0799999"
+       cy="99.05999"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="as" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="a"
+       cx="5.0799999"
+       cy="91.439987"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="a" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="gs"
+       cx="5.0799999"
+       cy="83.819992"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="gs" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="g"
+       cx="5.0799999"
+       cy="76.199989"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="g" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="fs"
+       cx="5.0799999"
+       cy="68.579994"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="fs" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="f"
+       cx="5.0799999"
+       cy="60.959995"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="f" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="e"
+       cx="5.0799999"
+       cy="53.339996"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="e" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="ds"
+       cx="5.0799999"
+       cy="45.869236"
+       rx="2.54"
+       ry="2.3907614"
+       inkscape:label="ds" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="d"
+       cx="5.0799999"
+       cy="38.099998"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="d" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="cs"
+       cx="5.0799999"
+       cy="30.479998"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="cs" />
+    <ellipse
+       style="fill:#ff00ff;stroke-width:0.465"
+       id="c"
+       cx="5.0799999"
+       cy="22.859999"
+       rx="2.54"
+       ry="2.5399997"
+       inkscape:label="c" />
+    <ellipse
+       style="fill:#0000ff;stroke-width:0.465"
+       id="notes"
+       cx="19.050001"
+       cy="118.10999"
+       rx="3.8100002"
+       ry="3.8099999"
+       inkscape:label="notes" />
+    <ellipse
+       style="fill:#00ff00;stroke-width:0.465"
+       id="cvs"
+       cx="6.3500004"
+       cy="118.10999"
+       rx="3.8100002"
+       ry="3.8099999"
+       inkscape:label="cvs" />
+    <ellipse
+       style="fill:#00ff00;stroke-width:0.465"
+       id="mode"
+       cx="18.989569"
+       cy="11.429999"
+       rx="3.8704319"
+       ry="3.8099999"
+       inkscape:label="mode" />
+    <ellipse
+       style="fill:#00ff00;stroke-width:0.465"
+       id="scale"
+       cx="6.3500004"
+       cy="11.429999"
+       rx="3.8100002"
+       ry="3.8099999"
+       inkscape:label="scale" />
+  </g>
+</svg>

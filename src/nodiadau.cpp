@@ -37,7 +37,15 @@ struct Nodiadau : Module {
 		B_LIGHT,
 		LIGHTS_LEN
 	};
-    dsp::ClockDivider infoclock;
+
+
+    int ionian[7] =     {0,2,4,5,7,9,11};
+    int dorian[7] =     {0,2,3,5,7,9,10};
+    int phrygian[7] =   {0,1,3,5,7,8,10};
+    int lydian[7] =     {0,2,4,6,7,9,11};
+    int mixolydian[7] = {0,2,4,5,7,9,10};
+    int aeolian[7] =    {0,2,3,5,7,8,10};
+    int locrian[7] =    {0,1,3,5,6,8,10};
 
 	Nodiadau() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
@@ -45,7 +53,6 @@ struct Nodiadau : Module {
 		configInput(MODE_INPUT, "Mode");
 		configInput(CVS_INPUT, "CV (poly)");
 		configOutput(NOTES_OUTPUT, "Notes (poly)");
-        infoclock.setDivision(512);
 	}
 
 	void process(const ProcessArgs& args) override {
@@ -82,17 +89,67 @@ struct Nodiadau : Module {
         lights[MIXOLYDIAN_LIGHT].setBrightness((float)((mode==7)||(mode==8)));
         lights[AEOLIAN_LIGHT   ].setBrightness((float)((mode==9)||(mode==10)));
         lights[LOCRIAN_LIGHT   ].setBrightness((float)(mode==11));
-
-        int channels = std::max(inputs[CVS_INPUT].getChannels(),1);
-        for (int i=0;i<channels;i++){
-            float pitch = inputs[CVS_INPUT].getVoltage(i);
-            ;;
+        int *scale = ionian;
+        switch (mode){
+            case 0:
+                scale = ionian;
+                break;
+            case 1:
+                scale = ionian;
+                break;
+            case 2:
+                scale = dorian;
+                break;
+            case 3:
+                scale = dorian;
+                break;
+            case 4:
+                scale = phrygian;
+                break;
+            case 5:
+                scale = lydian;
+                break;
+            case 6:
+                scale = lydian;
+                break;
+            case 7:
+                scale = mixolydian;
+                break;
+            case 8:
+                scale = mixolydian;
+                break;
+            case 9:
+                scale = aeolian;
+                break;
+            case 10:
+                scale = aeolian;
+                break;
+            case 11:
+                scale = locrian;
+                break;
         }
 
+        int channels = std::max(inputs[CVS_INPUT].getChannels(),1);
+        outputs[NOTES_OUTPUT].setChannels(channels);
 
-        /* if (infoclock.process()){ */
-            /* INFO("scale: %f, t: %f, note: %d",scale,t,note); */
-        /* } */
+        for (int channel=0;channel<channels;channel++){
+            float pitch = inputs[CVS_INPUT].getVoltage(channel);
+            float closest_value = 0.0f;
+            float closest_distance = 100.0f;
+            float note_in_volts = 0.0f;
+            float distance = 0.0f;
+            int octave = int(floorf(pitch));
+            float volts_minus_octave = pitch - octave;
+            for (int i=0;i<7;i++){
+                note_in_volts = (scale[i] + note) % 12 / 12.0f;
+                distance = fabsf(volts_minus_octave - note_in_volts);
+                if (distance < closest_distance){
+                    closest_distance = distance;
+                    closest_value = note_in_volts;
+                }
+            }
+            outputs[NOTES_OUTPUT].setVoltage(closest_value + octave, channel);
+        }
 	}
 };
 
@@ -100,7 +157,10 @@ struct Nodiadau : Module {
 struct NodiadauWidget : ModuleWidget {
 	NodiadauWidget(Nodiadau* module) {
 		setModule(module);
-		setPanel(createPanel(asset::plugin(pluginInstance, "res/nodiadau.svg")));
+		setPanel(createPanel(
+                    asset::plugin(pluginInstance, "res/nodiadau.svg"),
+                    asset::plugin(pluginInstance, "res/nodiadau-dark.svg")
+                    ));
 
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
