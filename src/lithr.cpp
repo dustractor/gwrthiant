@@ -5,6 +5,16 @@
 
 struct Lithr : Module {
 	enum ParamId {
+
+		LIMITA_MIN_PARAM,
+		LIMITA_MAX_PARAM,
+		LIMITB_MIN_PARAM,
+		LIMITB_MAX_PARAM,
+		LIMITC_MIN_PARAM,
+		LIMITC_MAX_PARAM,
+		LIMITD_MIN_PARAM,
+		LIMITD_MAX_PARAM,
+
 		SLIDERA1_PARAM,
 		SLIDERA2_PARAM,
 		SLIDERA3_PARAM,
@@ -87,6 +97,16 @@ struct Lithr : Module {
 
 	Lithr() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
+
+		configParam(LIMITA_MIN_PARAM, -10.f, 10.f, -10.f, "Min A");
+		configParam(LIMITA_MAX_PARAM, -10.f, 10.f, 10.f, "Max A");
+		configParam(LIMITB_MIN_PARAM, -10.f, 10.f, -10.f, "Min B");
+		configParam(LIMITB_MAX_PARAM, -10.f, 10.f, 10.f, "Max B");
+		configParam(LIMITC_MIN_PARAM, -10.f, 10.f, -10.f, "Min C");
+		configParam(LIMITC_MAX_PARAM, -10.f, 10.f, 10.f, "Max C");
+		configParam(LIMITD_MIN_PARAM, -10.f, 10.f, -10.f, "Min D");
+		configParam(LIMITD_MAX_PARAM, -10.f, 10.f, 10.f, "Max D");
+
 		configParam(SLIDERA1_PARAM,  -10.f, 10.f, 0.f, "A1");
 		configParam(SLIDERA2_PARAM,  -10.f, 10.f, 0.f, "A2");
 		configParam(SLIDERA3_PARAM,  -10.f, 10.f, 0.f, "A3");
@@ -163,70 +183,82 @@ struct Lithr : Module {
         outputs[OUTPUTC_OUTPUT].setChannels(16);
         outputs[OUTPUTD_OUTPUT].setChannels(16);
 
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA1_PARAM].getValue(),0);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA2_PARAM].getValue(),1);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA3_PARAM].getValue(),2);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA4_PARAM].getValue(),3);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA5_PARAM].getValue(),4);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA6_PARAM].getValue(),5);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA7_PARAM].getValue(),6);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA8_PARAM].getValue(),7);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA9_PARAM].getValue(),8);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA10_PARAM].getValue(),9);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA11_PARAM].getValue(),10);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA12_PARAM].getValue(),11);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA13_PARAM].getValue(),12);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA14_PARAM].getValue(),13);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA15_PARAM].getValue(),14);
-        outputs[OUTPUTA_OUTPUT].setVoltage(params[SLIDERA16_PARAM].getValue(),15);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB1_PARAM].getValue(),0);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB2_PARAM].getValue(),1);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB3_PARAM].getValue(),2);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB4_PARAM].getValue(),3);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB5_PARAM].getValue(),4);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB6_PARAM].getValue(),5);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB7_PARAM].getValue(),6);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB8_PARAM].getValue(),7);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB9_PARAM].getValue(),8);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB10_PARAM].getValue(),9);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB11_PARAM].getValue(),10);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB12_PARAM].getValue(),11);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB13_PARAM].getValue(),12);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB14_PARAM].getValue(),13);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB15_PARAM].getValue(),14);
-        outputs[OUTPUTB_OUTPUT].setVoltage(params[SLIDERB16_PARAM].getValue(),15);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC1_PARAM].getValue(),0);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC2_PARAM].getValue(),1);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC3_PARAM].getValue(),2);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC4_PARAM].getValue(),3);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC5_PARAM].getValue(),4);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC6_PARAM].getValue(),5);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC7_PARAM].getValue(),6);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC8_PARAM].getValue(),7);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC9_PARAM].getValue(),8);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC10_PARAM].getValue(),9);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC11_PARAM].getValue(),10);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC12_PARAM].getValue(),11);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC13_PARAM].getValue(),12);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC14_PARAM].getValue(),13);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC15_PARAM].getValue(),14);
-        outputs[OUTPUTC_OUTPUT].setVoltage(params[SLIDERC16_PARAM].getValue(),15);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD1_PARAM].getValue(),0);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD2_PARAM].getValue(),1);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD3_PARAM].getValue(),2);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD4_PARAM].getValue(),3);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD5_PARAM].getValue(),4);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD6_PARAM].getValue(),5);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD7_PARAM].getValue(),6);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD8_PARAM].getValue(),7);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD9_PARAM].getValue(),8);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD10_PARAM].getValue(),9);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD11_PARAM].getValue(),10);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD12_PARAM].getValue(),11);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD13_PARAM].getValue(),12);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD14_PARAM].getValue(),13);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD15_PARAM].getValue(),14);
-        outputs[OUTPUTD_OUTPUT].setVoltage(params[SLIDERD16_PARAM].getValue(),15);
+        float limit_a_min = params[LIMITA_MIN_PARAM].getValue();
+        float limit_a_max = params[LIMITA_MAX_PARAM].getValue();
+        float limit_b_min = params[LIMITB_MIN_PARAM].getValue();
+        float limit_b_max = params[LIMITB_MAX_PARAM].getValue();
+        float limit_c_min = params[LIMITC_MIN_PARAM].getValue();
+        float limit_c_max = params[LIMITC_MAX_PARAM].getValue();
+        float limit_d_min = params[LIMITD_MIN_PARAM].getValue();
+        float limit_d_max = params[LIMITD_MAX_PARAM].getValue();
+
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA1_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),0);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA2_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),1);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA3_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),2);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA4_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),3);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA5_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),4);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA6_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),5);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA7_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),6);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA8_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),7);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA9_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),8);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA10_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),9);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA11_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),10);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA12_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),11);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA13_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),12);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA14_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),13);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA15_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),14);
+        outputs[OUTPUTA_OUTPUT].setVoltage(math::rescale(params[SLIDERA16_PARAM].getValue(),-10.0f,10.0f,limit_a_min,limit_a_max),15);
+
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB1_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),0);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB2_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),1);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB3_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),2);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB4_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),3);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB5_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),4);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB6_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),5);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB7_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),6);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB8_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),7);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB9_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),8);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB10_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),9);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB11_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),10);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB12_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),11);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB13_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),12);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB14_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),13);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB15_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),14);
+        outputs[OUTPUTB_OUTPUT].setVoltage(math::rescale(params[SLIDERB16_PARAM].getValue(),-10.0f,10.0f,limit_b_min,limit_b_max),15);
+
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC1_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),0);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC2_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),1);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC3_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),2);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC4_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),3);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC5_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),4);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC6_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),5);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC7_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),6);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC8_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),7);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC9_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),8);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC10_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),9);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC11_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),10);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC12_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),11);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC13_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),12);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC14_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),13);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC15_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),14);
+        outputs[OUTPUTC_OUTPUT].setVoltage(math::rescale(params[SLIDERC16_PARAM].getValue(),-10.0f,10.0f,limit_c_min,limit_c_max),15);
+
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD1_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),0);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD2_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),1);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD3_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),2);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD4_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),3);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD5_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),4);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD6_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),5);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD7_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),6);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD8_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),7);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD9_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),8);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD10_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),9);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD11_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),10);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD12_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),11);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD13_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),12);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD14_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),13);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD15_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),14);
+        outputs[OUTPUTD_OUTPUT].setVoltage(math::rescale(params[SLIDERD16_PARAM].getValue(),-10.0f,10.0f,limit_d_min,limit_d_max),15);
 	}
 };
 
@@ -243,6 +275,15 @@ struct LithrWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 7.62)), module, Lithr::LIMITA_MIN_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 27.94)), module, Lithr::LIMITA_MAX_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 38.1)), module, Lithr::LIMITB_MIN_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 58.42)), module, Lithr::LIMITB_MAX_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 68.58)), module, Lithr::LIMITC_MIN_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 88.9)), module, Lithr::LIMITC_MAX_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 99.06)), module, Lithr::LIMITD_MIN_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(134.62, 119.38)), module, Lithr::LIMITD_MAX_PARAM));
 
 		addParam(createParamCentered<LEDSliderBlue>(mm2px(Vec(10.16, 17.78)), module, Lithr::SLIDERA1_PARAM));
 		addParam(createParamCentered<LEDSliderBlue>(mm2px(Vec(17.78, 17.78)), module, Lithr::SLIDERA2_PARAM));
