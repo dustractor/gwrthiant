@@ -37,6 +37,7 @@ extern Model* modelErys;
 extern Model* modelNodiadau;
 extern Model* modelPylu;
 extern Model* modelLithr;
+extern Model* modelBrofen;
 
 struct Crossfader : app::SvgSlider {
 	Crossfader() {
