@@ -120,6 +120,39 @@
       "tags": [
         "utility"
       ]
+    },
+    {
+      "slug": "penodol",
+      "name": "penodol",
+      "description": "8x note to custom-value utility",
+      "tags": [
+        "utility"
+      ]
+    },
+    {
+      "slug": "penodol4",
+      "name": "penodol4",
+      "description": "4x note CV to custom value",
+      "tags": [
+        "utility"
+      ]
+    },
+    {
+      "slug": "cloren",
+      "name": "cloren",
+      "description": "16x tails",
+      "tags": [
+        "utility",
+        "polyphonic"
+      ]
+    },
+    {
+      "slug": "ehangu",
+      "name": "ehangu",
+      "description": "Gate-sequence from decimal expansion",
+      "tags": [
+        "sequencer"
+      ]
     }
   ]
 }

@@ -6,7 +6,6 @@ struct Brofen : Module {
 		PARAMS_LEN
 	};
 	enum InputId {
-		B_INPUT,
 		A_INPUT,
 		INPUTS_LEN
 	};
@@ -19,7 +18,6 @@ struct Brofen : Module {
 
 	Brofen() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
-		configInput(B_INPUT, "");
 		configInput(A_INPUT, "");
 	}
 
@@ -39,32 +37,29 @@ struct TestDisplay : LedDisplay {
             if (!module->inputs[Brofen::A_INPUT].isConnected()){
                 return;
             }
-
             Rect b = box.zeroPos();
             Vec ct = b.getCenter();
-
             int channels =  module->inputs[Brofen::A_INPUT].getChannels();
-
             nvgScissor(args.vg,b.pos.x,b.pos.y,b.size.x,b.size.y);
-
-
             float h = b.size.y / channels;
             float hh = h / 2;
-
+            float tx = 0.0f;
+            float ty = 0.0f;
+            int tr = 0;
             for (int i=0;i<channels;i++){
                 float v = module->inputs[Brofen::A_INPUT].getVoltage(i);
-                INFO("ch: %d | h: %f | i: %d | v: %f",channels,h,i,v);
                 nvgBeginPath(args.vg);
-                nvgCircle(args.vg,((b.size.x/10)*v)+ct.x,(i*h)+hh,10.0);
-                nvgFillColor(args.vg,nvgRGBA(255,255,255,255));
+                tx = ((b.size.x/20.0f)*v)+ct.x;
+                ty = (i*h)+hh;
+                nvgCircle(args.vg,tx,ty,5.0);
+                tr = (int)(tx+100);
+                INFO("%f %d",tx,tr);
+                nvgFillColor(args.vg,nvgRGBA(tr,0,tr,255));
                 nvgFill(args.vg);
                 nvgClosePath(args.vg);
             }
-
-            
         }
     }
-
 };
 
 
@@ -84,8 +79,7 @@ struct BrofenWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.62, 7.62)), module, Brofen::B_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.62, 17.78)), module, Brofen::A_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.62, 7.62)), module, Brofen::A_INPUT));
 
 	}
 };

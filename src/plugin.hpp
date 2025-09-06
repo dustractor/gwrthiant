@@ -38,6 +38,10 @@ extern Model* modelNodiadau;
 extern Model* modelPylu;
 extern Model* modelLithr;
 extern Model* modelBrofen;
+extern Model* modelPenodol;
+extern Model* modelPenodol4;
+extern Model* modelCloren;
+extern Model* modelEhangu;
 
 struct Crossfader : app::SvgSlider {
 	Crossfader() {
