@@ -7,6 +7,7 @@ struct Ehangu : Module {
 		OFFSET_PARAM,
 		NUMERATOR_PARAM,
 		DENOMINATOR_PARAM,
+		MODEQ_PARAM,
 		PARAMS_LEN
 	};
 	enum InputId {
@@ -28,6 +29,7 @@ struct Ehangu : Module {
 		configParam(OFFSET_PARAM, 0.f, 128.f, 0.f, "Offset");
 		configParam(NUMERATOR_PARAM, 1.f, 1024.f, 1.f, "Numerator");
 		configParam(DENOMINATOR_PARAM, 1.f, 1024.f, 1.f, "Denominator");
+		configParam(MODEQ_PARAM, 2.f, 9.f, 2.f, "Modulus");
 		configInput(CLOCK_INPUT, "Clock");
 		configInput(RESET_INPUT, "Reset");
 		configOutput(GATE_OUTPUT, "Gate");
@@ -35,29 +37,33 @@ struct Ehangu : Module {
         paramQuantities[OFFSET_PARAM]->snapEnabled = true;
         paramQuantities[NUMERATOR_PARAM]->snapEnabled = true;
         paramQuantities[DENOMINATOR_PARAM]->snapEnabled = true;
+        paramQuantities[MODEQ_PARAM]->snapEnabled = true;
 
 	}
     int gates[1024] = {0};
-    int lastlength,lastnum,lastdenom;
     dsp::SchmittTrigger clockSchmitt;
     dsp::SchmittTrigger resetSchmitt;
-    int seqStep = 0;
+    int step = 0;
     bool prevClock = 0;
     bool prevReset = 0;
     bool clk_transitioned_high = 0;
-    int length,offset,num,denom;
-
+    int length,offset,num,denom,modeq;
+    int lastlength,lastnum,lastdenom,lastmodeq;
+    int getstep(){
+        return (step + offset) % length;
+    }
 	void process(const ProcessArgs& args) override {
         length = params[LENGTH_PARAM].getValue();
         offset = params[OFFSET_PARAM].getValue();
         num = params[NUMERATOR_PARAM].getValue();
         denom = params[DENOMINATOR_PARAM].getValue();
+        modeq = params[MODEQ_PARAM].getValue();
 
-        if ((length!=lastlength)||(num!=lastnum)||(denom!=lastdenom)){
+        if ((length!=lastlength)||(num!=lastnum)||(denom!=lastdenom)||(modeq!=lastmodeq)){
             num %= denom;
             for (int i=0;i<length;++i){
                 num *= 10;
-                gates[i] = ((num/denom) % 2) == 0;
+                gates[i] = ((num/denom) % modeq) == 0;
                 num %= denom;
                 if (num==0){
                     break;
@@ -66,11 +72,12 @@ struct Ehangu : Module {
             lastlength = length;
             lastnum = num;
             lastdenom = denom;
+            lastmodeq = modeq;
         }
         bool reset = resetSchmitt.process(inputs[RESET_INPUT].getVoltage());
 
         if (!(prevReset > 0.f) && (reset > 0.f)){
-            seqStep = offset;
+            step = 0;
         }
 
         prevReset = reset;
@@ -85,8 +92,8 @@ struct Ehangu : Module {
         prevClock = clock;
 
         if (clk_transitioned_high){
-            seqStep = (seqStep + 1) % length;
-            outputs[GATE_OUTPUT].setVoltage(gates[seqStep]*10.f);
+            step += 1;
+            outputs[GATE_OUTPUT].setVoltage(gates[getstep()]*10.f);
         }
 	}
 };
@@ -110,7 +117,7 @@ struct GateDisplay : LedDisplay {
                 nvgBeginPath(args.vg);
                 ty = i*h;
                 nvgRect(args.vg,tx,ty,b.size.x,h);
-                nvgFillColor(args.vg,nvgRGBA(s,s+((((module->offset+module->seqStep)%module->length)==i)*127),s,255));
+                nvgFillColor(args.vg,nvgRGBA(s,s+((module->getstep()==i)*127),s,255));
                 nvgFill(args.vg);
                 nvgClosePath(args.vg);
             }
@@ -138,15 +145,16 @@ struct EhanguWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 7.62)), module, Ehangu::LENGTH_PARAM));
-		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 17.78)), module, Ehangu::OFFSET_PARAM));
-		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 27.94)), module, Ehangu::NUMERATOR_PARAM));
-		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 38.1)), module, Ehangu::DENOMINATOR_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 12.7)), module, Ehangu::LENGTH_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 22.86)), module, Ehangu::OFFSET_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 43.18)), module, Ehangu::NUMERATOR_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 53.34)), module, Ehangu::DENOMINATOR_PARAM));
+		addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(7.62, 68.58)), module, Ehangu::MODEQ_PARAM));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.62, 96.52)), module, Ehangu::CLOCK_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.62, 106.68)), module, Ehangu::RESET_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.62, 91.44)), module, Ehangu::CLOCK_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.62, 101.6)), module, Ehangu::RESET_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(7.62, 121.92)), module, Ehangu::GATE_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(7.62, 116.84)), module, Ehangu::GATE_OUTPUT));
 	}
 };
 

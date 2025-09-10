@@ -153,6 +153,22 @@
       "tags": [
         "sequencer"
       ]
+    },
+    {
+      "slug": "cama",
+      "name": "cama",
+      "description": "decimal expansion sequencer",
+      "tags": [
+        "sequencer"
+      ]
+    },
+    {
+      "slug": "thyle",
+      "name": "thyle",
+      "description": "dual euclidean sequencer",
+      "tags": [
+        "sequencer"
+      ]
     }
   ]
 }

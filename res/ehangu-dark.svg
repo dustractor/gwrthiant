@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="3.3424804"
-     inkscape:cx="34.555176"
-     inkscape:cy="224.68344"
+     inkscape:zoom="6.6849608"
+     inkscape:cx="6.5071436"
+     inkscape:cy="120.26996"
      inkscape:window-width="3840"
      inkscape:window-height="2126"
      inkscape:window-x="-11"
@@ -55,15 +55,22 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     sodipodi:insensitive="true">
     <rect
        style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="rect7"
        width="25.4"
        height="128.5"
        x="0"
-       y="0"
-       sodipodi:insensitive="true" />
+       y="0" />
+    <rect
+       style="display:inline;fill:#f2f2f2;stroke-width:0.465"
+       id="rect1"
+       width="5.0799994"
+       height="0.61993182"
+       x="5.0799999"
+       y="47.950031" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -74,50 +81,59 @@
        style="fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="gate"
        cx="7.6199999"
-       cy="121.92"
+       cy="116.84"
        r="2.5399997"
        inkscape:label="gate" />
     <circle
        style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="reset"
        cx="7.6199999"
-       cy="106.67999"
+       cy="101.59999"
        r="2.5399997"
        inkscape:label="reset" />
     <circle
        style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="clock"
        cx="7.6199999"
-       cy="96.519997"
+       cy="91.439995"
        r="2.5399997"
        inkscape:label="clock" />
     <circle
        style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="denominator"
        cx="7.6199999"
-       cy="38.099998"
+       cy="53.339996"
        r="2.5399997"
        inkscape:label="denominator" />
     <circle
        style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="numerator"
        cx="7.6199999"
-       cy="27.939999"
+       cy="43.179996"
        r="2.5399997"
        inkscape:label="numerator" />
     <circle
        style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="offset"
        cx="7.6199999"
-       cy="17.779999"
+       cy="22.860008"
        r="2.5399997"
        inkscape:label="offset" />
     <circle
        style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
        id="length"
        cx="7.6199999"
-       cy="7.6199999"
+       cy="12.7"
        r="2.5399997"
        inkscape:label="length" />
+    <circle
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.465"
+       id="modeq"
+       cx="7.6199999"
+       cy="68.579994"
+       r="2.5399997"
+       inkscape:label="modeq"
+       inkscape:transform-center-x="-0.079157783"
+       inkscape:transform-center-y="1.9789446" />
   </g>
 </svg>
