@@ -169,6 +169,14 @@
       "tags": [
         "sequencer"
       ]
+    },
+    {
+      "slug": "nesaf",
+      "name": "nesaf",
+      "description": "four euclidean sequencers each triggering the next",
+      "tags": [
+        "sequencer"
+      ]
     }
   ]
 }

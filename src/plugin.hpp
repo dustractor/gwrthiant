@@ -44,6 +44,7 @@ extern Model* modelCloren;
 extern Model* modelEhangu;
 extern Model* modelCama;
 extern Model* modelThyle;
+extern Model* modelNesaf;
 
 struct Crossfader : app::SvgSlider {
 	Crossfader() {
